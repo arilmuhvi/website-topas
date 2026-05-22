@@ -1,72 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topas Optical Persada</title>
+    <style>
+        /* Mengatur agar halaman penuh tanpa jarak pinggir */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; /* Mencegah munculnya scrollbar ganda */
+            background-color: #f4f4f9; /* Warna background opsional */
+        }
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>TOPAS OPTICAL PERSADA</title>
-
-<style>
-
-body{
-margin:0;
-font-family:Arial;
-background:#0f172a;
-color:white;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-}
-
-.card{
-background:#1e293b;
-padding:30px;
-border-radius:20px;
-width:90%;
-max-width:400px;
-text-align:center;
-}
-
-button{
-width:100%;
-padding:15px;
-border:none;
-border-radius:10px;
-background:#3b82f6;
-color:white;
-font-size:18px;
-margin-top:20px;
-}
-
-</style>
-
+        /* Mengatur iframe agar memenuhi 100% layar HP atau Laptop */
+        .app-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="card">
-
-<h1>PT. TOPAS OPTICAL PERSADA</h1>
-
-<p>Klik tombol di bawah untuk membuka Website.</p>
-
-<button onclick="bukaApp()">
-Buka Website
-</button>
-
-</div>
-
-<script>
-
-function bukaApp(){
-
-window.location.href =
-"https://script.google.com/macros/s/AKfycbxc4V8j1XpFxVEZqBEVC6Ta_kOIaM3j308w7dVV_58Jk9h9zzNiw4xwmNEM9xLaBJUE/exec";
-
-}
-
-</script>
+    <iframe class="app-container" src="https://script.google.com/macros/s/AKfycbxc4V8j1XpFxVEZqBEVC6Ta_kOIaM3j308w7dVV_58Jk9h9zzNiw4xwmNEM9xLaBJUE/exec" allowfullscreen></iframe>
 
 </body>
 </html>
