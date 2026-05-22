@@ -1,101 +1,59 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vercel + Google Apps Script</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PT Topas Optical Persada - Enterprise IT Infrastructure</title>
+  <!-- Tailwind CSS hanya untuk styling layar loading -->
+  <script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 40px;
-      background: #f5f5f5;
-    }
-
-    .container {
-      max-width: 400px;
-      margin: auto;
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    input {
+    html, body {
+      margin: 0;
+      padding: 0;
       width: 100%;
-      padding: 10px;
-      margin-top: 10px;
+      height: 100%;
+      overflow: hidden;
+      background-color: #0f172a; /* Slate 900 */
     }
-
-    button {
+    iframe {
       width: 100%;
-      padding: 10px;
-      margin-top: 15px;
-      background: black;
-      color: white;
+      height: 100%;
       border: none;
-      cursor: pointer;
+      display: none; /* Disembunyikan saat memuat */
     }
-
-    #result {
-      margin-top: 15px;
-      color: green;
+    .loader {
+      border-top-color: #b91c1c;
+      animation: spinner 1.5s linear infinite;
+    }
+    @keyframes spinner {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <h2>Kirim Data ke Google Sheet</h2>
-
-    <input type="text" id="name" placeholder="Nama" />
-    <input type="email" id="email" placeholder="Email" />
-
-    <button onclick="sendData()">Kirim</button>
-
-    <div id="result"></div>
+  <!-- Layar Pemuatan Transisi -->
+  <div id="loadingOverlay" class="fixed inset-0 flex flex-col items-center justify-center z-50">
+    <div class="loader ease-linear rounded-full border-4 border-slate-700 h-16 w-16 mb-4"></div>
+    <p class="text-white text-lg font-semibold tracking-wider">Menghubungkan ke Server Secure...</p>
+    <p class="text-slate-400 text-xs mt-1">PT TOPAS OPTICAL PERSADA</p>
   </div>
 
+  <!-- iFrame WebApp GAS -->
+  <!-- GANTI URL src di bawah ini dengan URL WebApp Google Apps Script Deploy (Live) Anda -->
+  <iframe 
+    id="gasFrame" 
+    src="[https://script.google.com/macros/s/AKfycbxc4V8j1XpFxVEZqBEVC6Ta_kOIaM3j308w7dVV_58Jk9h9zzNiw4xwmNEM9xLaBJUE/exec](https://script.google.com/macros/s/AKfycbxc4V8j1XpFxVEZqBEVC6Ta_kOIaM3j308w7dVV_58Jk9h9zzNiw4xwmNEM9xLaBJUE/exec)" 
+    onload="hideLoading()">
+  </iframe>
+
   <script>
-    async function sendData() {
-
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-
-      // GANTI DENGAN URL GOOGLE APPS SCRIPT KAMU
-      const GAS_URL =
-        "https://script.google.com/macros/s/AKfycbxc4V8j1XpFxVEZqBEVC6Ta_kOIaM3j308w7dVV_58Jk9h9zzNiw4xwmNEM9xLaBJUE/exec";
-
-      try {
-
-        const response = await fetch(GAS_URL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: name,
-            email: email,
-          }),
-        });
-
-        const data = await response.json();
-
-        document.getElementById("result").innerHTML =
-          "Data berhasil dikirim!";
-
-        console.log(data);
-
-      } catch (error) {
-
-        console.error(error);
-
-        document.getElementById("result").innerHTML =
-          "Gagal mengirim data";
-
-      }
+    function hideLoading() {
+      // Sembunyikan layar loading dan tampilkan iFrame secara mulus setelah termuat
+      document.getElementById('loadingOverlay').style.display = 'none';
+      document.getElementById('gasFrame').style.display = 'block';
     }
   </script>
-
 </body>
 </html>
