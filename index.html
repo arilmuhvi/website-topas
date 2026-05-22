@@ -1,59 +1,72 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PT Topas Optical Persada - Enterprise IT Infrastructure</title>
-  <!-- Tailwind CSS hanya untuk styling layar loading -->
-  <script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background-color: #0f172a; /* Slate 900 */
-    }
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: none; /* Disembunyikan saat memuat */
-    }
-    .loader {
-      border-top-color: #b91c1c;
-      animation: spinner 1.5s linear infinite;
-    }
-    @keyframes spinner {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-  </style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TOPAS OPTICAL PERSADA</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#0f172a;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.card{
+background:#1e293b;
+padding:30px;
+border-radius:20px;
+width:90%;
+max-width:400px;
+text-align:center;
+}
+
+button{
+width:100%;
+padding:15px;
+border:none;
+border-radius:10px;
+background:#3b82f6;
+color:white;
+font-size:18px;
+margin-top:20px;
+}
+
+</style>
+
 </head>
+
 <body>
 
-  <!-- Layar Pemuatan Transisi -->
-  <div id="loadingOverlay" class="fixed inset-0 flex flex-col items-center justify-center z-50">
-    <div class="loader ease-linear rounded-full border-4 border-slate-700 h-16 w-16 mb-4"></div>
-    <p class="text-white text-lg font-semibold tracking-wider">Menghubungkan ke Server Secure...</p>
-    <p class="text-slate-400 text-xs mt-1">PT TOPAS OPTICAL PERSADA</p>
-  </div>
+<div class="card">
 
-  <!-- iFrame WebApp GAS -->
-  <!-- GANTI URL src di bawah ini dengan URL WebApp Google Apps Script Deploy (Live) Anda -->
-  <iframe 
-    id="gasFrame" 
-    src="[https://script.google.com/macros/s/AKfycbxc4V8j1XpFxVEZqBEVC6Ta_kOIaM3j308w7dVV_58Jk9h9zzNiw4xwmNEM9xLaBJUE/exec](https://script.google.com/macros/s/AKfycbxc4V8j1XpFxVEZqBEVC6Ta_kOIaM3j308w7dVV_58Jk9h9zzNiw4xwmNEM9xLaBJUE/exec)" 
-    onload="hideLoading()">
-  </iframe>
+<h1>Sistem Online</h1>
 
-  <script>
-    function hideLoading() {
-      // Sembunyikan layar loading dan tampilkan iFrame secara mulus setelah termuat
-      document.getElementById('loadingOverlay').style.display = 'none';
-      document.getElementById('gasFrame').style.display = 'block';
-    }
-  </script>
+<p>Klik tombol di bawah untuk membuka aplikasi.</p>
+
+<button onclick="bukaApp()">
+Buka Aplikasi
+</button>
+
+</div>
+
+<script>
+
+function bukaApp(){
+
+window.location.href =
+"https://script.google.com/macros/s/AKfycbxc4V8j1XpFxVEZqBEVC6Ta_kOIaM3j308w7dVV_58Jk9h9zzNiw4xwmNEM9xLaBJUE/exec";
+
+}
+
+</script>
+
 </body>
 </html>
