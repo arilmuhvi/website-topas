@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vercel + Google Apps Script</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background: #f5f5f5;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 15px;
+      background: black;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 15px;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Kirim Data ke Google Sheet</h2>
+
+    <input type="text" id="name" placeholder="Nama" />
+    <input type="email" id="email" placeholder="Email" />
+
+    <button onclick="sendData()">Kirim</button>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    async function sendData() {
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+
+      // GANTI DENGAN URL GOOGLE APPS SCRIPT KAMU
+      const GAS_URL =
+        "https://script.google.com/macros/s/AKfycbxc4V8j1XpFxVEZqBEVC6Ta_kOIaM3j308w7dVV_58Jk9h9zzNiw4xwmNEM9xLaBJUE/exec";
+
+      try {
+
+        const response = await fetch(GAS_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+          }),
+        });
+
+        const data = await response.json();
+
+        document.getElementById("result").innerHTML =
+          "Data berhasil dikirim!";
+
+        console.log(data);
+
+      } catch (error) {
+
+        console.error(error);
+
+        document.getElementById("result").innerHTML =
+          "Gagal mengirim data";
+
+      }
+    }
+  </script>
+
+</body>
+</html>
